@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../core/services/user.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ToastService } from '../../core/components/toast/toast.service';
+import { SocketService } from '../../core/services/socket.service';
 
 @Component({
   selector: 'app-root',
@@ -21,6 +22,7 @@ export class RootComponent implements OnInit {
   constructor(
     private userService: UserService,
     private toastService: ToastService,
+    private socketService: SocketService,
     private router: Router
   ) {
     this.name =  `${this.userService.currentUser.firstname} ${this.userService.currentUser.lastname}`;
@@ -32,6 +34,10 @@ export class RootComponent implements OnInit {
     this.admin = this.userService.currentUser.userType === 'admin';
     this.router.events.subscribe(val => this.onRouteChange());
     this.onRouteChange();
+    this.userService.getNotifications()
+      .then((data: any) => this.notificationCount = data.total)
+      .catch(() => {});
+    this.socketService.onNotification(() => this.notificationCount++);
   }
 
   private onRouteChange() {
