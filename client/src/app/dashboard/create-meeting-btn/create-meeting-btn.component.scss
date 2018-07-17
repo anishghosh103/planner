@@ -1,0 +1,31 @@
+@import '~sass/colors';
+
+a {
+  display: inline-block;
+  background: $blue-color;
+  padding: 0.5rem 1rem;
+  color: white !important;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: 600;
+  border-radius: 4px;
+  cursor: pointer;
+
+  &:hover {
+    background: $blue-color--dark;
+  }
+}
+
+a.shrink {
+  padding: .075rem .52rem;
+  border-radius: 2rem;
+  display: none;
+}
+
+@media all and (max-width: 768px) {
+  a {
+    display: none;
+  }
+  a.shrink {
+    display: block;
+  }
+}

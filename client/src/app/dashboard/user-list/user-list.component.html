@@ -1,0 +1,8 @@
+<div class="wrapper">
+  <div class="user-container">
+    <app-user *ngFor="let user of users" [user]="user"></app-user>
+  </div>
+  <div class="text-center my-3" *ngIf="more">
+    <button (click)="loadMore()">Load More</button>
+  </div>
+</div>

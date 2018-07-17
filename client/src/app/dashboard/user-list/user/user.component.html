@@ -1,0 +1,16 @@
+<div class="wrapper" *ngIf="user" (click)="onUserClick()">
+  <div class="title">
+    <h1>{{ user.firstname }} {{ user.lastname }}</h1>
+    <h2>@{{ user.username }}</h2>
+  </div>
+  <div class="details">
+    <div class="item">
+      <i class="icon ion-md-mail"></i>
+      <span>{{ user.email }}</span>
+    </div>
+    <div class="item">
+      <i class="icon ion-md-call"></i>
+      <span>{{ user.mobile }}</span>
+    </div>
+  </div>
+</div>

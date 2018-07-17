@@ -1,0 +1,59 @@
+@import '~sass/colors';
+
+.wrapper {
+  width: 100%;
+  padding: 1rem;
+  background: hsl(0, 0%, 98%);
+  border: 3px solid hsl(0, 0%, 95%);
+  border-radius: 10px;
+  font-family: 'Roboto', sans-serif;
+  cursor: pointer;
+  user-select: none;
+  font-size: 0.9rem;
+  transition: all .05s ease-in;
+  
+  &:hover {
+    border-color: $blue-color;
+    box-shadow: 0 2px 16px hsla(0, 0%, 0%, 0.1);
+  }
+
+  &:active {
+    background: hsl(0, 0%, 96%);
+  }
+}
+
+.title {
+  margin-bottom: 10px;
+
+  h1 {
+    font-size: 1.25em;
+    margin: 0;
+  }
+
+  h2 {
+    font-size: 1.05em;
+    color: $text-color--lighter;
+    margin: 0;
+    font-weight: 400;
+  }
+}
+
+.details {
+  line-height: 1.5em;
+
+  .item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 3px;
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+    .icon {
+      margin-right: 10px;
+      font-size: 1.2em;
+      color: $text-color--lighter;
+    }
+  }
+}

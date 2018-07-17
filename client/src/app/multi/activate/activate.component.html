@@ -1,0 +1,8 @@
+<main>
+  <h1>Account Activation.</h1>
+  <!-- TODO: Add spinner instead of text -->
+  <p *ngIf="processing">Processing...</p>
+  <p *ngIf="activated">You account has been activated successfully.</p>
+  <p class="error" *ngIf="error">{{ error }}</p>
+  <a routerLink="/">Go Home</a>
+</main>

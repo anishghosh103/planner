@@ -1,0 +1,33 @@
+<div class="wrapper">
+  <header>
+    <h1>
+      {{ currentDate.format('MMMM') + ', ' + currentDate.format('YYYY') }}
+    </h1>
+  <div class="d-flex align-items-center" style="user-select: none;">
+      <app-create-meeting-btn></app-create-meeting-btn>
+      <span (click)="previousMonth()">
+        <i class="icon ion-ios-arrow-back"></i>
+      </span>
+      <span (click)="nextMonth()">
+        <i class="icon ion-ios-arrow-forward"></i>
+      </span>
+    </div>
+  </header>
+  <main>
+    <div class="calendar-container">
+      <div class="day-container">
+        <div class="day" *ngFor="let day of days">
+          {{ day }}
+        </div>
+      </div>
+      <div class="calendar">
+        <div class="date" *ngFor="let date of dates">
+          <app-date [date]="date"></app-date>
+        </div>
+      </div>
+    </div>
+  </main>
+  <button class="fab" *ngIf="showTodayFAB" (click)="goToToday()">
+    {{ today.get('date') }}
+  </button>
+</div>

@@ -1,0 +1,189 @@
+<div class="wrapper" *ngIf="showModal" (click)="hideModal()">
+  <div
+    class="meeting-modal"
+    [@modalAnim]="state"
+    (@modalAnim.done)="animationDone($event)"
+    (click)="stopPropagation($event)"
+    [formGroup]="form"
+  >
+
+    <span (click)="hideModal()">
+      <i class="icon ion-ios-close"></i>
+    </span>
+    
+    <h1>
+      Meeting Details
+    </h1>
+
+    <div class="item">
+      <div class="title">
+        Agenda
+      </div>
+      <div class="value">
+        <div class="content" *ngIf="display">
+          {{ meeting.purpose }}
+        </div>
+        <div class="input" *ngIf="create || edit">
+          <textarea
+            placeholder="e.g. Finalize all project items."
+            formControlName="purpose"
+          >{{ (meeting && meeting.purpose) || '' }}</textarea>
+        </div>
+      </div>
+    </div>
+    
+    <div class="item">
+      <div class="title">
+        Date
+      </div>
+      <div class="value">
+        <div class="content" *ngIf="display">
+          {{ mDate.format('Do') }}
+          {{ mDate.format('MMMM') }},
+          {{ mDate.get('year') }}
+        </div>
+        <div class="input" formGroupName="date" *ngIf="create || edit">
+          <select formControlName="day" style="flex: 1;">
+            <option
+              *ngFor="let moment of momentCounter.day"
+              [value]="moment.get('date')"
+            >
+              {{ moment.format('D') }}
+            </option>
+          </select>
+          <select formControlName="month" style="flex: 2;">
+            <option
+              *ngFor="let moment of momentCounter.month"
+              [value]="moment.get('month')"
+            >
+              {{ moment.format('MMMM') }}
+            </option>
+          </select>
+          <select formControlName="year" style="flex: 1;">
+            <option
+              *ngFor="let moment of momentCounter.year"
+              [value]="moment.get('year')"
+            >
+              {{ moment.format('YYYY') }}
+            </option>
+          </select>
+        </div>
+      </div>
+    </div>
+    
+    <div class="item">
+      <div class="title">
+        Starting Time
+      </div>
+      <div class="value">
+        <div class="content" *ngIf="display">
+          {{ mStartTime.format('HH') }}
+          :
+          {{ mStartTime.format('mm') }}
+        </div>
+        <div class="input" formGroupName="startTime" *ngIf="create || edit">
+          <select formControlName="hour">
+            <option
+              *ngFor="let moment of momentCounter.hour"
+              [value]="moment.get('hour')"
+            >
+              {{ moment.format('HH') }}
+            </option>
+          </select>
+          <select formControlName="minute">
+            <option
+              *ngFor="let moment of momentCounter.minute"
+              [value]="moment.get('minute')"
+            >
+              {{ moment.format('mm') }}
+            </option>
+          </select>
+        </div>
+      </div>
+    </div>
+    
+    <div class="item">
+      <div class="title">
+        Ending Time
+      </div>
+      <div class="value">
+        <div class="content" *ngIf="display">
+          {{ mEndTime.format('HH') }}
+          :
+          {{ mEndTime.format('mm') }}
+        </div>
+        <div class="input" formGroupName="endTime" *ngIf="create || edit">
+          <select formControlName="hour">
+            <option
+              *ngFor="let moment of momentCounter.hour"
+              [value]="moment.get('hour')"
+            >
+              {{ moment.format('HH') }}
+            </option>
+          </select>
+          <select formControlName="minute">
+            <option
+              *ngFor="let moment of momentCounter.minute"
+              [value]="moment.get('minute')"
+            >
+              {{ moment.format('mm') }}
+            </option>
+          </select>
+        </div>
+      </div>
+    </div>
+    
+    <div class="item">
+      <div class="title">
+        Place
+      </div>
+      <div class="value">
+        <div class="content" *ngIf="display">
+          {{ meeting.place }}
+        </div>
+        <div class="input" *ngIf="create || edit">
+          <input
+            type="text"
+            [value]="(meeting && meeting.place) || ''"
+            placeholder="e.g. Meeting Room, Phone Call, etc."
+            formControlName="place"
+          >
+        </div>
+      </div>
+    </div>
+    
+    <div class="item" *ngIf="display || edit">
+      <div class="title">
+        Creator
+      </div>
+      <div class="value">
+        <div class="content">
+          {{ meeting.createdBy.adminName }}
+        </div>
+      </div>
+    </div>
+
+    <div class="button-container" *ngIf="create || edit">
+      <app-spinner size="small" *ngIf="processing"></app-spinner>
+      <button class="create-btn"
+        *ngIf="create"
+        (click)="createMeeting()"
+        [disabled]="processing">
+        Create
+      </button>
+      <button class="update-btn"
+        *ngIf="edit"
+        (click)="updateMeeting()"
+        [disabled]="processing">
+        Update
+      </button>
+      <button class="delete-btn"
+        *ngIf="edit"
+        (click)="deleteMeeting()"
+        [disabled]="processing">
+        Delete
+      </button>
+    </div>
+    
+  </div>
+</div>

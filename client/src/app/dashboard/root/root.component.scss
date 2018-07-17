@@ -1,0 +1,160 @@
+@import '~sass/colors';
+
+.wrapper {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  position: relative;
+}
+
+aside {
+  background: $brand-color;
+  color: white;
+  width: 250px;
+  height: 100%;
+  z-index: 1;
+  text-align: center;
+  padding: 0.75rem 0;
+
+  .logo {
+    color: white !important;
+  }
+
+  .user-details {
+    padding: 2rem 3.25rem;
+    text-align: left;
+
+    h1, h2 {
+      font-family: 'Roboto', sans-serif;
+      margin: 0;
+    }
+
+    h1 {
+      font-size: 1.25rem;
+      font-weight: 500;
+      margin-bottom: 2px;
+    }
+
+    h2 {
+      font-size: 1rem;
+      font-weight: 300;
+    }
+  }
+
+  nav {
+    ul, li {
+      padding: 0;
+      margin: 0;
+      list-style-type: none;
+      text-align: left;
+    }
+
+    a {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      padding: 1rem 3.25rem;
+      cursor: pointer;
+      color: white !important;
+      font-family: 'Roboto', sans-serif;
+      font-weight: 500;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05rem;
+      user-select: none;
+      transition: all .1s ease-in-out;
+
+      .icon {
+        font-size: 1.25rem;
+        margin-right: 0.75rem;
+      }
+
+      &:hover {
+        background: hsla(0, 0%, 100%, 0.85);
+        color: $brand-color !important;
+      }
+
+      &.active {
+        background: white !important;
+        color: $brand-color !important;
+      }
+    }
+  }
+}
+
+main {
+  background: white;
+  flex: 1;
+  height: 100%;
+  z-index: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+header {
+  border-top: 3px solid $brand-color;
+  min-width: 0;
+  display: none;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  
+  .icon {
+    font-size: 2rem;
+    margin-left: 1rem;
+    color: $brand-color;
+    display: inline-block;
+    width: 2rem;
+  }
+}
+
+.router-container {
+  flex: 1;
+  overflow: hidden;
+}
+
+.icon {
+  cursor: pointer;
+}
+
+.notification {
+  position: relative;
+  
+  .notification-count {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: $yellow-color;
+    color: black;
+    padding: 1px 4px;
+    border-radius: 1rem;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 0.75rem;
+    font-style: normal;
+    transform: translate(50%, -45%);
+  }
+}
+
+@media all and (max-width: 768px) {
+  aside {
+    position: fixed;
+    top: 0;
+    left: 0;
+    transform: translateX(-100%);
+    transition: all .3s;
+
+    &.active {
+      transform: none;
+      box-shadow: 0 0 40px hsla(0, 0%, 0%, 0.35);
+
+      .icon {
+        display: inline-block;
+      }
+    }
+  }
+
+  header {
+    display: flex;
+  }
+}

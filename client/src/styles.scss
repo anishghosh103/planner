@@ -1,0 +1,34 @@
+@import 'sass/colors';
+
+body {
+  background-color: hsl(0, 0%, 97%) !important;
+  font-family: 'Roboto', sans-serif !important;
+}
+
+a {
+  text-decoration: none !important;
+  color: $link-color !important;
+  cursor: pointer !important;
+}
+
+a.logo {
+  font-size: 2.25rem;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: 600;
+  color: $brand-color !important;
+  user-select: none;
+}
+
+p {
+  color: $text-color !important;
+}
+
+input, select, textarea, button {
+  outline: none !important;
+}
+
+button:disabled {
+  opacity: 0.5 !important;
+  transform: none !important;
+  cursor: default !important;
+}

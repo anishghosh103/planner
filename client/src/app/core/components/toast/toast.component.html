@@ -1,0 +1,14 @@
+<div
+  class="wrapper {{ type }}"
+  [@toastAnim]="state"
+  (@toastAnim.done)="animationDone($event)"
+  *ngIf="show"
+>
+  <div class="title">
+    {{ title }}
+  </div>
+  <div class="subtitle">
+    {{ body }}
+  </div>
+  <i class="icon ion-md-close" (click)="state = 'hidden'"></i>
+</div>

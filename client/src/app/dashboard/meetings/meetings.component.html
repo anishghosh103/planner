@@ -1,0 +1,50 @@
+<div class="wrapper">
+  <header>
+    <div class="d-flex align-items-center">
+      <span class="mr-3" (click)="goBack()">
+        <i class="icon ion-md-calendar"></i>
+      </span>
+      <h1>
+        {{ date.format('D') + ' ' + date.format('MMMM') + ', ' + date.get('year') }}
+      </h1>
+    </div>
+    <div class="d-flex align-items-center" style="user-select: none;">
+      <app-create-meeting-btn></app-create-meeting-btn>
+      <span class="btn" (click)="previousDay()">
+        <i class="icon ion-ios-arrow-back"></i>
+      </span>
+      <span class="btn" (click)="nextDay()">
+        <i class="icon ion-ios-arrow-forward"></i>
+      </span>
+    </div>
+  </header>
+  <main>
+    <div class="hours">
+      <div class="hour" *ngFor="let hour of counter(23)">
+        <b>{{ hour }}</b>:00
+      </div>
+    </div>
+    <div class="meeting-container">
+      <div class="slot" *ngFor="let slot of slotArray.slots">
+        <div
+          class="meeting"
+          *ngFor="let meeting of slot.meetings"
+          [style.top]="meeting.ui.top + 'px'"
+          [style.height]="meeting.ui.height + 'px'"
+          (click)="onMeetingClick(meeting)"
+        >
+          {{ meeting.purpose }}
+        </div>
+      </div>
+
+      <div class="current-time" [style.top]="currentTime.top + 'px'"></div>
+
+      <div class="line-container">
+        <div class="line" *ngFor="let x of counter(23)"></div>
+      </div>
+    </div>
+  </main>
+  <div class="loader" *ngIf="loading">
+    <app-spinner></app-spinner>
+  </div>
+</div>

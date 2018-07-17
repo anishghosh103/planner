@@ -1,0 +1,24 @@
+{
+  "name": "planner",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "server": "nodemon server",
+    "ng:serve": "cd client && ng serve && cd ..",
+    "ng:build": "cd client && ng build --prod && cd ..",
+    "ng:watch": "cd client && ng build -op dist -w && cd ..",
+    "ng:clean": "if exist \"client/dist\" ( rd /s /q \"client/dist\" )"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/anishghosh103/planner.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/anishghosh103/planner/issues"
+  },
+  "homepage": "https://github.com/anishghosh103/planner#readme"
+}

@@ -1,0 +1,12 @@
+<header>
+  <a routerLink="/" class="logo">planner</a>
+</header>
+<div *ngIf="page === 'not-found'">
+  <app-not-found></app-not-found>
+</div>
+<div *ngIf="page === 'activate'">
+  <app-activate></app-activate>
+</div>
+<div *ngIf="page === 'reset'">
+  <app-reset-password></app-reset-password>
+</div>

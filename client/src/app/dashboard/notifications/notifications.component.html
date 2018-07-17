@@ -1,0 +1,19 @@
+<div class="wrapper">
+  <header>
+    <h1>Notifications</h1>
+    <a class="delete-btn" *ngIf="notifications.length" (click)="deleteAllNotifications()">Delete All</a>
+  </header>
+  <div class="notification-container">
+    <div class="notification" *ngFor="let notification of notifications" [innerHtml]="parse(notification)" (click)="onNotificationClick(notification)"></div>
+    <div class="button-container" *ngIf="hasMore">
+      <app-spinner size="small" *ngIf="processing"></app-spinner>
+      <button class="load-more" [disabled]="processing" (click)="loadMore()">
+        Load More
+      </button>
+    </div>
+    <p *ngIf="notifications.length === 0">No notifications yet.</p>
+  </div>
+  <div class="loader" *ngIf="!initialized && processing">
+    <app-spinner></app-spinner>
+  </div>
+</div>

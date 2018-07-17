@@ -1,0 +1,63 @@
+<div class="wrapper">
+  <aside [class.active]="showSidebar">
+    <a routerLink="/" class="logo d-none d-md-block">planner</a>
+    <div class="user-details">
+      <h1>{{ name }}</h1>
+      <h2>{{ '@' + username }}</h2>
+    </div>
+    <nav>
+      <ul>
+        <li>
+          <a
+            routerLink="/"
+            [class.active]="homeRoute"
+            (click)="showSidebar = false"
+          >
+            <i class="icon ion-md-home"></i> Home
+          </a>
+        </li>
+        <li *ngIf="userType === 'normal'">
+          <a
+            routerLink="/notifications"
+            routerLinkActive="active"
+            (click)="showSidebar = false"
+          >
+            <i class="icon ion-md-notifications notification">
+              <span class="notification-count" *ngIf="notificationCount">
+                {{ notificationCount }}
+              </span>
+            </i>
+            <span>Notification</span>
+          </a>
+        </li>
+        <li>
+          <a (click)="logout()">
+            <i class="icon ion-md-log-out"></i> Logout
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </aside>
+  <main>
+    <header>
+      <a routerLink="/" class="logo">planner</a>
+      <div class="d-flex align-items-center">
+        <app-create-meeting-btn
+          [shrink]="true"
+          *ngIf="!homeRoute"
+        ></app-create-meeting-btn>
+        <i
+          class="icon ion-md-menu notification"
+          [class.ion-md-menu]="!showSidebar"
+          [class.ion-md-close]="showSidebar"
+          (click)="showSidebar = !showSidebar"
+        ></i>
+      </div>
+    </header>
+    <div class="router-container">
+      <router-outlet></router-outlet>
+    </div>
+  </main>
+  <app-meeting-modal></app-meeting-modal>
+  <app-reminder></app-reminder>
+</div>

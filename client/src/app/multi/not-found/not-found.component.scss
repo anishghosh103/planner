@@ -1,0 +1,38 @@
+@import '~sass/colors';
+
+main {
+  text-align: center;
+  padding: 100px 0;
+  font-family: 'Roboto', sans-serif;
+}
+
+h1 {
+  color: $red-color;
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+h5 {
+  font-weight: 300;
+}
+
+a {
+  display: inline-block;
+  margin-top: 2rem;
+  padding: 0.6rem 2rem;
+  background: white;
+  border-radius: 3rem;
+  font-size: 1.05rem;
+  box-shadow: 0 2px 8px hsla(0, 0%, 0%, 0.075);
+  transition: all .2s ease-in;
+  
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px hsla(0, 0%, 0%, 0.1);
+  }
+
+  &:active {
+    transform: none;
+    box-shadow: 0 2px 10px hsla(0, 0%, 0%, 0.075);
+    transition: none;
+  }
+}

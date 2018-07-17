@@ -1,0 +1,104 @@
+<div class="wrapper" *ngIf="meeting !== null" (click)="hide()">
+  <div
+    class="reminder-modal"
+    [@reminderAnim]="state"
+    (@reminderAnim.done)="animationDone($event)"
+    (click)="stopPropagation($event)"
+  >
+
+    <span class="close-btn" (click)="hide()">
+      <i class="icon ion-ios-close"></i>
+    </span>
+    
+    <h1>
+      Reminder
+    </h1>
+    <h2>
+      Hurry up! The following meeting is approaching.
+    </h2>
+
+    <div class="item">
+      <div class="title">
+        Agenda
+      </div>
+      <div class="value">
+        <div class="content">
+          {{ meeting.purpose }}
+        </div>
+      </div>
+    </div>
+    
+    <div class="item">
+      <div class="title">
+        Date
+      </div>
+      <div class="value">
+        <div class="content">
+          {{ mDate.format('Do') }}
+          {{ mDate.format('MMMM') }},
+          {{ mDate.get('year') }}
+        </div>
+      </div>
+    </div>
+    
+    <div class="item">
+      <div class="title">
+        Starting Time
+      </div>
+      <div class="value">
+        <div class="content">
+          {{ mStartTime.format('HH') }}
+          :
+          {{ mStartTime.format('mm') }}
+        </div>
+      </div>
+    </div>
+    
+    <div class="item">
+      <div class="title">
+        Ending Time
+      </div>
+      <div class="value">
+        <div class="content">
+          {{ mEndTime.format('HH') }}
+          :
+          {{ mEndTime.format('mm') }}
+        </div>
+      </div>
+    </div>
+    
+    <div class="item">
+      <div class="title">
+        Place
+      </div>
+      <div class="value">
+        <div class="content">
+          {{ meeting.place }}
+        </div>
+      </div>
+    </div>
+    
+    <div class="item">
+      <div class="title">
+        Creator
+      </div>
+      <div class="value">
+        <div class="content">
+          {{ meeting.createdBy.adminName }}
+        </div>
+      </div>
+    </div>
+
+    <div class="button-container">
+      <button class="snooze-btn"
+        (click)="snooze()">
+        Snooze
+      </button>
+      <button class="dismiss-btn"
+        (click)="hide()">
+        Dismiss
+      </button>
+    </div>
+    
+  </div>
+</div>

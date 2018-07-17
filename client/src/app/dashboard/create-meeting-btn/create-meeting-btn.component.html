@@ -1,0 +1,13 @@
+<a
+  (click)="createMeeting()"
+  *ngIf="admin"
+>
+  Create New Meeting
+</a>
+<a
+  (click)="createMeeting()"
+  *ngIf="admin && shrink"
+  class="shrink"
+>
+  <i class="icon ion-md-add"></i>
+</a>

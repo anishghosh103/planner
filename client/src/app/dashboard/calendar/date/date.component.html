@@ -1,0 +1,13 @@
+<div class="wrapper" [class.today]="date.today" (click)="goToMeetingsPage()">
+  <div class="date" [class.inactive]="!date.currentMonth">
+    {{ date.mDate.get('date') }}
+  </div>
+  <div class="meeting-container" *ngIf="date.meetings && date.meetings.length">
+    <div class="meeting" *ngFor="let meeting of date.meetings | slice:0:2">
+      {{ meeting.purpose }}
+    </div>
+    <div class="more" *ngIf="date.meetings.length > 2">
+      {{ date.meetings.length - 2 }} more...
+    </div>
+  </div>
+</div>

@@ -1,0 +1,37 @@
+@import '~sass/colors';
+
+.wrapper {
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  padding: 1rem;
+}
+
+.user-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-column-gap: 10px;
+  grid-row-gap: 10px;
+}
+
+button {
+  padding: 0.5rem 2rem;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  background: $blue-color;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 0.95rem;
+
+  &:hover {
+    background: $blue-color--dark;
+    cursor: pointer;
+  }
+}
+
+@media all and (max-width: 576px) {
+  .user-container {
+    grid-template-columns: 1fr;
+  }
+}
